@@ -1,6 +1,10 @@
 -- OPTIONS
 local set = vim.opt
 
+
+-- Disable the mouse interaction
+vim.o.mouse = ""
+
 -- line nums
 vim.opt.number = true
 

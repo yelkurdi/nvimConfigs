@@ -4,7 +4,16 @@ Mostly adapted from tonybanters's [repo](https://github.com/tonybanters/nvim) an
 Thanks Tony
 
 # Install
--  Clone this repo
+1.  Backup existing nvim configs if you have any
+```
+cd ~/.config/
+mv nvim nvim_backup
+```
+2.  Clone this repo
+```
+cd ~
+git clone git@github.com:yelkurdi/nvimConfigs.git .config/nvim
+```
 
 ## Mac OS
 -  Instal fonts for iTerm:
@@ -17,6 +26,10 @@ brew install ripgrep
 ```
 
 ## Linux
+#TODO
+
+3.  Dont forget to alias vim :) `alias 'vim=nvim'` and add it to your ~/.bashrc
+
 
 
 
