@@ -3,6 +3,18 @@ return {
         -- Main LSP Configuration
         "neovim/nvim-lspconfig",
         dependencies = {
+            {
+                -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+                -- used for completion, annotations and signatures of Neovim apis
+                "folke/lazydev.nvim",
+                ft = "lua",
+                opts = {
+                    library = {
+                        -- Load luvit types when the `vim.uv` word is found
+                        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+                    },
+                },
+            },
             -- Automatically install LSPs and related tools to stdpath for Neovim
             -- Mason must be loaded before its dependents so we need to set it up here.
             -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
@@ -54,10 +66,18 @@ return {
                     --
                     -- In this case, we create a function that lets us more easily define mappings specific
                     -- for LSP related items. It sets the mode, buffer and description for us each time.
+                    --
+
+
+                    --
                     local map = function(keys, func, desc, mode)
                         mode = mode or "n"
                         vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
                     end
+
+                    map('grh', vim.lsp.buf.hover, "[H]over")
+                    map('grf', vim.diagnostic.open_float, "[O]open float")
+                    map('grH', vim.lsp.buf.signature_help, "Signature [h]elp")
 
                     -- Rename the variable under your cursor.
                     --  Most Language Servers support renaming across files, etc.
@@ -212,6 +232,7 @@ return {
                 pylsp = {
                     settings = {
                         pylsp = {
+                            -- configurationSources = {},
                             plugins = {
                                 -- Disable/enable plugins
                                 pycodestyle = {
@@ -291,16 +312,4 @@ return {
             })
         end,
     },
-	{
-		-- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
-		-- used for completion, annotations and signatures of Neovim apis
-		"folke/lazydev.nvim",
-		ft = "lua",
-		opts = {
-			library = {
-				-- Load luvit types when the `vim.uv` word is found
-				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-			},
-		},
-	},
 }
