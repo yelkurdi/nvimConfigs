@@ -25,6 +25,13 @@ brew install --cask font-jetbrains-mono-nerd-font font-caskaydia-cove-nerd-font
 brew install ripgrep
 ```
 
+-  For claudecode install using brew
+```
+brew install --cask claude-code
+```
+
+
+
 ## Linux
 #TODO
 
@@ -32,4 +39,5 @@ brew install ripgrep
 
 
 
-
+# Resource
+-  Nice key mappings [Seth Phaeno](https://www.youtube.com/watch?v=FGVY7gbaoQI)
