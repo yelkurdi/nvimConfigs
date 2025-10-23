@@ -18,7 +18,7 @@ git clone git@github.com:yelkurdi/nvimConfigs.git .config/nvim
 ## Mac OS
 -  Instal fonts for iTerm:
 ```
-brew install --cask font-jetbrains-mono-nerd-font font-caskaydia-cove-nerd-font
+bre install --cask font-jetbrains-mono-nerd-font font-caskaydia-cove-nerd-font
 ```
 -  Install ripgrep
 ```
@@ -33,7 +33,9 @@ brew install --cask claude-code
 
 
 ## Linux
-#TODO
+-  Inatall neovim on linux if does not already exists
+-  Install ripgrep [rep](https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation)
+  -  On bluevela I first installed rust and then built rigprep from source.  
 
 3.  Dont forget to alias vim :) `alias 'vim=nvim'` and add it to your ~/.bashrc
 
