@@ -1,22 +1,64 @@
 return {
     {
-        "folke/tokyonight.nvim",
+        "Mofiqul/vscode.nvim",
         config = function()
+            -- load the theme without affecting devicon colors.
+            vim.cmd.colorscheme "vscode"
+            local c = require('vscode.colors').get_colors()
+            local mycolors = {} ---@type table<string,string>
+            if vim.o.background == 'dark' then
+                mycolors = {
+                    -- normalBack = '#1F1F1F',
+                    normalBack = '#121212',
+                    normalNC = '#2E2D2D',
+                }
+            else
+                mycolors = {
+                    normalBack = '#FFFFFF',
+                    normalNC = '#2E2D2D',
+                }
+            end
 
-            -- Color picker: https://htmlcolorcodes.com/color-picker/
+            require('vscode').setup({
 
-            vim.cmd.colorscheme "tokyonight"
+                -- My midifications
+                vim.api.nvim_set_hl(0, 'Normal', { bg = mycolors.normalBack}),
+                -- None-focus split
+                vim.api.nvim_set_hl(0, 'NormalNC', { bg = mycolors.normalNC }),
 
-            vim.api.nvim_set_hl(0, 'Normal', { bg = '#00044F' })
+                -- Alternatively set style in setup
+                -- style = 'light'
 
-            -- Grey for general line numbers
-            vim.api.nvim_set_hl(0, "LineNr", { fg = "#808086" })
+                -- Enable transparent background
+                transparent = true,
 
-            -- Set the background and foreground of the hover window content
-            vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#20195E" })
+                -- Enable italic comment
+                italic_comments = true,
 
-            -- Set the background and foreground of the hover window border
-            -- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#4F002B" })
+                -- Enable italic inlay type hints
+                italic_inlayhints = true,
+
+                -- Underline `@markup.link.*` variants
+                underline_links = true,
+
+                -- Disable nvim-tree background color
+                disable_nvimtree_bg = true,
+
+                -- Apply theme colors to terminal
+                terminal_colors = true,
+
+                -- Override colors (see ./lua/vscode/colors.lua)
+                color_overrides = {
+                    vscLineNumber = '#FFFFFF',
+                },
+
+                -- Override highlight groups (see ./lua/vscode/theme.lua)
+                group_overrides = {
+                    -- this supports the same val table as vim.api.nvim_set_hl
+                    -- use colors from this colorscheme by requiring vscode.colors!
+                    Cursor = { fg=c.vscDarkBlue, bg=c.vscLightGreen, bold=true },
+                }
+            })
         end
     },
     {
@@ -25,7 +67,39 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         opts = {
-            theme = 'tokyonight',
+            theme = 'vscode',
         }
     }
 }
+
+-- return {
+--     {
+--         "folke/tokyonight.nvim",
+--         config = function()
+--
+--             -- Color picker: https://htmlcolorcodes.com/color-picker/
+--
+--             vim.cmd.colorscheme "tokyonight"
+--
+--             vim.api.nvim_set_hl(0, 'Normal', { bg = '#00044F' })
+--
+--             -- Grey for general line numbers
+--             vim.api.nvim_set_hl(0, "LineNr", { fg = "#808086" })
+--
+--             -- Set the background and foreground of the hover window content
+--             vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#20195E" })
+--
+--             -- Set the background and foreground of the hover window border
+--             -- vim.api.nvim_set_hl(0, "FloatBorder", { bg = "#4F002B" })
+--         end
+--     },
+--     {
+--         "nvim-lualine/lualine.nvim",
+--         dependencies = {
+--             "nvim-tree/nvim-web-devicons",
+--         },
+--         opts = {
+--             theme = 'tokyonight',
+--         }
+--     }
+-- }

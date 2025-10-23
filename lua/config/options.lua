@@ -19,9 +19,8 @@ set.ignorecase = true
 set.smartcase = true
 
 -- appearance
-set.termguicolors = true
-set.background = "dark"
 set.signcolumn = "yes"
+set.termguicolors = true
 
 -- cursor line
 vim.opt.cursorline = true
