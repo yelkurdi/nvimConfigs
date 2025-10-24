@@ -29,6 +29,9 @@ return {
                 -- None-focus split
                 vim.api.nvim_set_hl(0, 'NormalNC', { bg = mycolors.NormalNC_bg }),
 
+                -- cursor highlight color set to none-focus so that it disapear when out of focus
+                vim.api.nvim_set_hl(0, "CursorLine", { bg = mycolors.NormalNC_bg}),
+
                 -- Set background of Telescope window
                 vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = mycolors.Normal_bg }),
                 -- Set foreground (color of border characters) and background of border
