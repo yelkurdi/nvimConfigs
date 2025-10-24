@@ -13,6 +13,8 @@ return {
                     FloatBorder_fg = '#3069BF',
                     FloatBorder_bg = '#121212',
                     NormalNC_bg = '#2E2D2D',
+                    TabLineSel_fg = "#D1B241",
+                    TabLineSel_bg = "#595439",
                 }
             else
                 mycolors = {
@@ -28,6 +30,9 @@ return {
                 vim.api.nvim_set_hl(0, 'Normal', { bg = mycolors.Normal_bg }),
                 -- None-focus split
                 vim.api.nvim_set_hl(0, 'NormalNC', { bg = mycolors.NormalNC_bg }),
+
+                -- Tab line
+                vim.api.nvim_set_hl(0, "TabLineSel", { bg = mycolors.TabLineSel_bg, bold = true }),
 
                 -- cursor highlight color set to none-focus so that it disapear when out of focus
                 vim.api.nvim_set_hl(0, "CursorLine", { bg = mycolors.NormalNC_bg}),
