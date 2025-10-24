@@ -1,8 +1,8 @@
-local telescope = require "telescope"
 return {
     'nvim-telescope/telescope.nvim',
     dependencies = {
         'nvim-lua/plenary.nvim',
+        {'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
     },
     config = function()
         local actions = require('telescope.actions')
@@ -27,7 +27,7 @@ return {
 
         -- Rip grep + Fzf
         vim.keymap.set('n', '<leader>fg', function()
-            builtin.grep_string({ search = vim.fn.input("Grep > ") });
+            builtin.grep_string({ search = vim.fn.input("Grep > ") })
         end)
 
         -- Find instance of current view being included
@@ -43,12 +43,12 @@ return {
 
         -- find files in vim config
         vim.keymap.set('n', '<leader>fi', function()
-            builtin.find_files({ cwd = "~/.config/nvim/" });
+            builtin.find_files({ cwd = vim.fn.stdpath("config") })
         end)
 
         -- find files in vim plugin packages
         vim.keymap.set('n', '<leader>fp', function()
-            builtin.find_files({ cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy") });
+            builtin.find_files({ cwd = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy") })
         end)
     end
 }

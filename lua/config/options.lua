@@ -66,3 +66,11 @@ vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 vim.opt.foldnestmax = 4
 
+-- Terminal
+-- vim.api.nvim_create_augroup('TermOpen', {
+--     group = vim.api.nvim_create_augroup('custom-term-open', { clear = true }),
+--     callback = function()
+--         vim.opt.number = false
+--         vim.opt.relativenumber = false
+--     end,
+-- })

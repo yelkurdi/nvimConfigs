@@ -9,22 +9,34 @@ return {
             if vim.o.background == 'dark' then
                 mycolors = {
                     -- normalBack = '#1F1F1F',
-                    normalBack = '#121212',
-                    normalNC = '#2E2D2D',
+                    Normal_bg = '#121212',
+                    FloatBorder_fg = '#3069BF',
+                    FloatBorder_bg = '#121212',
+                    NormalNC_bg = '#2E2D2D',
                 }
             else
                 mycolors = {
                     normalBack = '#FFFFFF',
-                    normalNC = '#2E2D2D',
+                    NormalNC_bg = '#2E2D2D',
                 }
             end
 
             require('vscode').setup({
 
+                -- Color picker: https://htmlcolorcodes.com/color-picker/
                 -- My midifications
-                vim.api.nvim_set_hl(0, 'Normal', { bg = mycolors.normalBack}),
+                vim.api.nvim_set_hl(0, 'Normal', { bg = mycolors.Normal_bg }),
                 -- None-focus split
-                vim.api.nvim_set_hl(0, 'NormalNC', { bg = mycolors.normalNC }),
+                vim.api.nvim_set_hl(0, 'NormalNC', { bg = mycolors.NormalNC_bg }),
+
+                -- Set background of Telescope window
+                vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = mycolors.Normal_bg }),
+                -- Set foreground (color of border characters) and background of border
+                vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = mycolors.FloatBorder_fg, bg = mycolors.FloatBorder_bg }),
+                -- Set background of generic float window
+                vim.api.nvim_set_hl(0, "NormalFloat", { bg = mycolors.Normal_bg }),
+                -- Set foreground and background of generic float border
+                vim.api.nvim_set_hl(0, "FloatBorder", { fg = mycolors.FloatBorder_fg, bg = mycolors.FloatBorder_bg }),
 
                 -- Alternatively set style in setup
                 -- style = 'light'
