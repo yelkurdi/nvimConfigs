@@ -57,6 +57,9 @@ set.incsearch = true
 -- faster cursor hold
 set.updatetime = 50
 
+-- wrap
+set.wrap = false
+
 -- folding use basic vim folding with treesitter
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
