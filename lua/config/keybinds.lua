@@ -12,6 +12,9 @@ local function toggle_gutter()
         vim.opt.relativenumber = false
         vim.opt.signcolumn = "no"
         vim.opt.foldcolumn = "0"
+        require("snacks").setup({
+            Snacks.indent.disable()
+        })
         print("Gutter Hidden")
     else
         -- Turn everything ON (Adjust these to your preferred defaults)
@@ -19,6 +22,9 @@ local function toggle_gutter()
         vim.opt.relativenumber = false
         vim.opt.signcolumn = "yes"
         vim.opt.foldcolumn = "1"
+        require("snacks").setup({
+            Snacks.indent.enable()
+        })
         print("Gutter Shown")
     end
 end
