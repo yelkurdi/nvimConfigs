@@ -32,3 +32,9 @@ end
 -- Create the keymap
 -- Use <leader>tg to trigger the function
 vim.keymap.set('n', '<leader>tg', toggle_gutter, { desc = "Toggle Left Gutter (Numbers/Signs/Folds)" })
+
+-- Terminal: open in bottom horizontal split
+vim.keymap.set('n', '<leader>te', function()
+    vim.cmd('botright split | terminal')
+end, { desc = "Open terminal in bottom split" })
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = "Exit terminal mode" })
