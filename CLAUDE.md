@@ -11,7 +11,7 @@ A modular Neovim configuration using **lazy.nvim** as the plugin manager. Primar
 **Entry point:** `init.lua` loads three config modules in order: `config.options`, `config.keybinds`, `config.lazy`.
 
 **Core config modules** (`lua/config/`):
-- `options.lua` — Vim options (tabs=4, treesitter folding, persistent undo, dark theme)
+- `options.lua` — Vim options (tabs=4, treesitter folding, no swap/backup/undofile, dark theme)
 - `keybinds.lua` — Global keymaps and custom functions (e.g., `toggle_gutter()`)
 - `lazy.lua` — Bootstraps lazy.nvim and imports all plugin specs from `lua/plugins/`
 
@@ -21,6 +21,7 @@ A modular Neovim configuration using **lazy.nvim** as the plugin manager. Primar
 
 - **Leader key:** `<space>`
 - **Keybinding namespaces:** `<leader>f` (finder/telescope), `<leader>t` (toggles), `<leader>a` (Claude AI), `<leader>s` (search/snacks), `<leader>h` (git hunks), `gr` (LSP)
+- **Terminal:** `<leader>tt` opens terminal in bottom split; `:term` is aliased to do the same; `<Esc><Esc>` exits terminal mode
 - **Nerd Font aware:** `vim.g.have_nerd_font = true` is set; many plugins use this for icon fallback
 - **LSP keybindings** are set via `LspAttach` autocmd in `lua/plugins/lsp.lua` using a local `map()` helper
 - **No mouse** (`mouse = ""`), keyboard-only workflow

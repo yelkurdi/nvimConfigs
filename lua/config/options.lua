@@ -49,7 +49,7 @@ set.scrolloff = 8
 set.swapfile = false
 set.backup = false
 set.undodir = os.getenv("HOME") .. "/.vim/undodir"
-set.undofile = true
+set.undofile = false
 
 -- incremental search
 set.incsearch = true
