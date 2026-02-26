@@ -38,3 +38,49 @@ vim.keymap.set('n', '<leader>te', function()
     vim.cmd('botright split | terminal')
 end, { desc = "Open terminal in bottom split" })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = "Exit terminal mode" })
+
+-- Jump to end of current indentation block (Python)
+vim.keymap.set('n', ']i', function()
+    local current_indent = vim.fn.indent(vim.fn.line('.'))
+    local line = vim.fn.line('.')
+    local last_line = vim.fn.line('$')
+
+    -- Move to next line
+    line = line + 1
+    while line <= last_line do
+        local indent = vim.fn.indent(line)
+        local is_blank = vim.fn.getline(line):match('^%s*$')
+
+        -- If we find a line with same or less indentation (and it's not blank), we've reached the end
+        if not is_blank and indent <= current_indent then
+            vim.fn.cursor(line - 1, 1)
+            return
+        end
+        line = line + 1
+    end
+
+    -- If we reach the end of file, go to last line
+    vim.fn.cursor(last_line, 1)
+end, { desc = "Jump to end of indentation block" })
+
+-- Jump to start of current indentation block
+vim.keymap.set('n', '[i', function()
+    local current_indent = vim.fn.indent(vim.fn.line('.'))
+    local line = vim.fn.line('.') - 1
+
+    -- Move to previous line
+    while line >= 1 do
+        local indent = vim.fn.indent(line)
+        local is_blank = vim.fn.getline(line):match('^%s*$')
+
+        -- If we find a line with less indentation (and it's not blank), we've found the parent block
+        if not is_blank and indent < current_indent then
+            vim.fn.cursor(line, 1)
+            return
+        end
+        line = line - 1
+    end
+
+    -- If we reach the start of file, go to first line
+    vim.fn.cursor(1, 1)
+end, { desc = "Jump to start of indentation block" })
