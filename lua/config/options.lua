@@ -60,6 +60,10 @@ set.updatetime = 50
 -- wrap
 set.wrap = false
 
+-- spell
+set.spelllang = "en_us"
+set.spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
+
 -- folding use basic vim folding with treesitter
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
