@@ -39,6 +39,9 @@ vim.keymap.set('n', '<leader>te', function()
 end, { desc = "Open terminal in bottom split" })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = "Exit terminal mode" })
 
+-- Save selected lines to ~/.buffer (overwrite)
+vim.keymap.set('v', '<leader>bs', ":<C-u>'<,'>w! ~/.buffer<CR>", { silent = true, desc = "Save selection to ~/.buffer" })
+
 -- Jump to end of current indentation block (Python)
 vim.keymap.set('n', ']i', function()
     local current_indent = vim.fn.indent(vim.fn.line('.'))
