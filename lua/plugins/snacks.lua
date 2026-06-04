@@ -12,7 +12,7 @@ return {
         explorer = { enabled = false },
         indent = {
             enabled = true,
-            indent = { enabled = false },
+            indent = { enabled = true },
             scope = { enabled = false },
         },
         input = { enabled = true },
