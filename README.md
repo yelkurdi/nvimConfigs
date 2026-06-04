@@ -1,45 +1,79 @@
-# My neovim configuration
-My neovim configuration focused on python development.
-Mostly adapted from tonybanters's [repo](https://github.com/tonybanters/nvim) and his very nice YouTube [tutorial](https://www.youtube.com/watch?v=46z_h4bNzjk).
-Thanks Tony
+# My Neovim Configuration
 
-# Install
-1.  Backup existing nvim configs if you have any
-```
-cd ~/.config/
-mv nvim nvim_backup
-```
-2.  Clone this repo
-```
-cd ~
-git clone git@github.com:yelkurdi/nvimConfigs.git .config/nvim
+A Neovim configuration focused on Python development.
+
+Mostly adapted from tonybanters's [repo](https://github.com/tonybanters/nvim) and his
+very nice YouTube [tutorial](https://www.youtube.com/watch?v=46z_h4bNzjk). Thanks Tony!
+
+## Install
+
+1. Back up any existing Neovim config:
+
+   ```bash
+   cd ~/.config/
+   mv nvim nvim_backup
+   ```
+
+2. Clone this repo:
+
+   ```bash
+   git clone git@github.com:yelkurdi/nvimConfigs.git ~/.config/nvim
+   ```
+
+3. Install platform-specific dependencies (see below).
+
+4. Alias `vim` to `nvim` in your `~/.bashrc` (or `~/.zshrc`):
+
+   ```bash
+   alias vim=nvim
+   ```
+
+## Dependencies
+
+### macOS
+
+Install Nerd Fonts for iTerm:
+
+```bash
+brew install --cask font-jetbrains-mono-nerd-font font-caskaydia-cove-nerd-font
 ```
 
-## Mac OS
--  Instal fonts for iTerm:
-```
-bre install --cask font-jetbrains-mono-nerd-font font-caskaydia-cove-nerd-font
-```
--  Install ripgrep
-```
+Install ripgrep:
+
+```bash
 brew install ripgrep
 ```
 
--  For claudecode install using brew
-```
+Install Claude Code:
+
+```bash
 brew install --cask claude-code
 ```
 
+### Linux (bluevela and ccc)
 
+On these clusters, neither `ripgrep` nor a recent `nvim` is available, so we build
+both from source into `~/.local`.
 
-## Linux
--  Inatall neovim on linux if does not already exists
--  Install ripgrep [rep](https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation)
-  -  On bluevela I first installed rust and then built rigprep from source.  
+1. Install [Rust](https://rust-lang.org/learn/get-started/).
 
-3.  Dont forget to alias vim :) `alias 'vim=nvim'` and add it to your ~/.bashrc
+2. Build [ripgrep](https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#building)
+   from source:
 
+   ```bash
+   cargo install --root ~/.local --path .
+   ```
 
+3. Build Neovim from source:
 
-# Resource
--  Nice key mappings [Seth Phaeno](https://www.youtube.com/watch?v=FGVY7gbaoQI)
+   ```bash
+   mkdir /tmp/nvim && cd /tmp/nvim
+   git clone git@github.com:neovim/neovim.git
+   cd neovim
+   make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=~/.local/
+   make install
+   ```
+
+## Resources
+
+- Nice key mappings — [Seth Phaeno](https://www.youtube.com/watch?v=FGVY7gbaoQI)
