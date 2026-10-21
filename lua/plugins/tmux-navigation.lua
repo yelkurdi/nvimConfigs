@@ -41,7 +41,7 @@ return {
         {
             "<C-\\>",
             function()
-                require("nvim-tmux-navigation").NvimTmuxNavigatePrevious()
+                require("nvim-tmux-navigation").NvimTmuxNavigateLastActive()
             end,
             mode = { "n" },
             desc = "Tmux/Nvim navigate previous",
